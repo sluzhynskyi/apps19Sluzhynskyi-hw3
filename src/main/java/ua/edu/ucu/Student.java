@@ -2,6 +2,7 @@ package ua.edu.ucu;
 
 
 import java.util.Objects;
+
 class Student {
 
     private double GPA;
@@ -34,18 +35,23 @@ class Student {
 
     @Override
     public String toString() {
-        return "Student{name=" + name + ", surname=" + surname + ", " + "GPA=" + GPA + ", year=" + year + '}';
+        return "Student{name=" + name + ", surname=" + surname
+                + ", " + "GPA=" + GPA + ", year=" + year + '}';
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Student)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Student)) {
+            return false;
+        }
         Student student = (Student) o;
-        return Double.compare(student.getGPA(), getGPA()) == 0 &&
-                getYear() == student.getYear() &&
-                getName().equals(student.getName()) &&
-                getSurname().equals(student.getSurname());
+        return Double.compare(student.getGPA(), getGPA()) == 0
+                && getYear() == student.getYear()
+                && getName().equals(student.getName())
+                && getSurname().equals(student.getSurname());
     }
 
     @Override

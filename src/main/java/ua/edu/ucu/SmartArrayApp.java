@@ -5,12 +5,18 @@ import java.util.Arrays;
 import ua.edu.ucu.functions.MyComparator;
 import ua.edu.ucu.functions.MyFunction;
 import ua.edu.ucu.functions.MyPredicate;
-import ua.edu.ucu.smartarr.*;
+// Import all decorators
+import ua.edu.ucu.smartarr.BaseArray;
+import ua.edu.ucu.smartarr.DistinctDecorator;
+import ua.edu.ucu.smartarr.MapDecorator;
+import ua.edu.ucu.smartarr.SmartArray;
+import ua.edu.ucu.smartarr.FilterDecorator;
+import ua.edu.ucu.smartarr.SortDecorator;
 
 public class SmartArrayApp {
 
-    public static Integer[]
-    filterPositiveIntegersSortAndMultiplyBy2(Integer[] integers) {
+    public static Integer[] filterPositiveIntegersSortAndMultiplyBy2(
+            Integer[] integers) {
 
         MyPredicate pr = new MyPredicate() {
             @Override
@@ -46,16 +52,20 @@ public class SmartArrayApp {
     public static String[]
     findDistinctStudentNamesFrom2ndYearWithGPAgt4AndOrderedBySurname(Student[] students) {
         MyPredicate highMarksAndSophomore = new MyPredicate() {
+            final static public int MINGPA = 4;
+            final static public int EXACTYEAR = 2;
+
             @Override
             public boolean test(Object st) {
-                return (((int) ((Student) st).getGPA()) >= 4 &&
-                        ((Student) st).getYear() == 2);
+                return (((int) ((Student) st).getGPA()) >= MINGPA
+                        && ((Student) st).getYear() == EXACTYEAR);
             }
         };
         MyComparator sortBySurname = new MyComparator() {
             @Override
-            public int compare(Object st1, Object st2) {
-                return (((Student) st1).getSurname().compareTo(((Student) st2).getSurname()));
+            public int compare(Object firstSt, Object secondSt) {
+                return (((Student) firstSt).getSurname().compareTo(
+                        ((Student) secondSt).getSurname()));
             }
         };
         MyFunction surnameAndName = new MyFunction() {
