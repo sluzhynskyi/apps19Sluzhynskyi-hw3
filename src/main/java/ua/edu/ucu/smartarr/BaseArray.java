@@ -1,6 +1,28 @@
 package ua.edu.ucu.smartarr;
 
-// Base array for decorators
-public class BaseArray {
+import java.util.Arrays;
 
+// Base array for decorators
+public class BaseArray implements SmartArray {
+    private Object[] array;
+
+    public BaseArray(Object[] arr) {
+        this.array = Arrays.copyOf(arr, arr.length);
+    }
+
+    @Override
+    public Object[] toArray() {
+        return Arrays.copyOf(array, array.length);
+    }
+
+    @Override
+    public String operationDescription() {
+        return "Without decorators";
+    }
+
+
+    @Override
+    public int size() {
+        return array.length;
+    }
 }
