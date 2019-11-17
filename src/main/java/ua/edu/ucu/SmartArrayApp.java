@@ -57,15 +57,15 @@ public class SmartArrayApp {
 
             @Override
             public boolean test(Object st) {
-                return (((int) ((Student) st).getGPA()) >= MINGPA
-                        && ((Student) st).getYear() == EXACTYEAR);
+                return ((int) ((Student) st).getGPA()) >= MINGPA
+                        && ((Student) st).getYear() == EXACTYEAR;
             }
         };
         MyComparator sortBySurname = new MyComparator() {
             @Override
             public int compare(Object firstSt, Object secondSt) {
-                return (((Student) firstSt).getSurname().compareTo(
-                        ((Student) secondSt).getSurname()));
+                return ((Student) firstSt).getSurname().compareTo(
+                        ((Student) secondSt).getSurname());
             }
         };
         MyFunction surnameAndName = new MyFunction() {
