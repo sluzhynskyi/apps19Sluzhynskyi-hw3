@@ -43,8 +43,8 @@ public class SmartArrayApp {
         SmartArray sa = new BaseArray(integers);
 
         sa = new FilterDecorator(sa, pr); // Result: [2, 1, 3];
-        sa = new SortDecorator(sa, cmp); // Result: [1, 2, 3]
-        sa = new MapDecorator(sa, func); // Result: [2, 4, 6]
+        sa = new SortDecorator(sa, cmp); // Result: [1, 2, 3];
+        sa = new MapDecorator(sa, func); // Result: [2, 4, 6];
         Object[] result = sa.toArray();
         return Arrays.copyOf(result, result.length, Integer[].class);
     }

@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 // Base array for decorators
 public class BaseArray implements SmartArray {
-    private Object[] array;
+    public Object[] array;
 
     public BaseArray(Object[] arr) {
         this.array = Arrays.copyOf(arr, arr.length);
@@ -24,5 +24,9 @@ public class BaseArray implements SmartArray {
     @Override
     public int size() {
         return array.length;
+    }
+
+    public void setValue(int index) {
+        array[index] = 0;
     }
 }

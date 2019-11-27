@@ -6,11 +6,17 @@ import java.util.Arrays;
 
 // Tests every element and removes it if it doesn't satisfy MyPredicate
 public class FilterDecorator extends SmartArrayDecorator {
+    MyPredicate pr;
     public FilterDecorator(SmartArray smartArray, MyPredicate pr) {
         super(smartArray);
-        array = Arrays.stream(smartArray.toArray()).filter(pr::test).toArray();
+        this.pr = pr;
     }
 
+    @Override
+    public Object[] toArray() {
+        Object[] a = Arrays.stream(smartArray.toArray()).filter(pr::test).toArray();
+        return Arrays.copyOf(a, a.length);
+    }
 
     @Override
     public String operationDescription() {
